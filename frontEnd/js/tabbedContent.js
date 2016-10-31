@@ -18,4 +18,18 @@ function openTab(evt, tab) {
     document.getElementById(tab).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+function setup() {
+    $("a")[0].addEventListener(click, function() {
+        openTab(Event, 'listing');
+    });
+        $("a")[1].addEventListener(click, function() {
+        openTab(Event, 'wishList');
+    }); 
+        $("a")[2].addEventListener(click, function() {
+        openTab(Event, 'addNewListing');
+    });
+    
+}
+
 window.onload = setup;
