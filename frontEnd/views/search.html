@@ -1,9 +1,67 @@
-<html>
+<!DOCTYPE html>
     <head>
-        <title></title>
+        <title>Rose-Hulman Book Exchange Search</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="../js/tabbedContent.js"></script>
+        <link rel="stylesheet" href="../css/tabbedContent.css">
     </head>
     <body>
-        <h1>Rose-Hulman Book Exchange<h1>
+        <div>
+        <h1>Rose-Hulman Book Exchange</h1>  
+        <hr/>
+        </div>
+        <div>
+        <ul class="tab">
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'listing')">Listings</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wishList')">Wishlists</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'addNewListing')">Add New Listing</a></li>
+        </ul>
+        </div>
+        <div class="sidebar">
+            <p>Sort by:</p>
+            <select>
+                <option value="priceL2H">Price: Low -> High</option>
+                <option value="priceH2L">Price: High -> Low</option>
+                <option value="titleA2Z">Book Title: A -> Z</option>
+                <option value="titleZ2A">Book Title: Z -> A</option>
+            </select>
+            <p>Filter By:</p>
+            <form>
+                <input type="checkbox" name="priceRange" value="doPriceRange">Price Range<br />
+            <select>
+                <option value="low">$0-$30</option>
+                <option value="med">$31-$60</option>
+                <option value="high">$61-$90</option>
+                <option value="tooHigh">$91-$120</option>
+            </select>
+            </form>
+            <form>
+                <input type="checkbox" name="condition" value="doCondition">Condition <br />
+                <select>
+                    <option value="new">New</option>
+                    <option value="likeNew">Like New</option>
+                    <option value="satisfactory">Satisfactory</option>
+                    <option value="fair">Fair</option>
+                    <option value="poor">Poor</option>
+                </select> 
+            </form>
             
+            <form>
+                <input type="checkbox" name="marking" value="doMarking">Inner Markings Allowed? <br />
+            </form>
+            
+            <button>Update</button>
+        </div>        
+        <div id="listing" class="tabcontent">
+            <p>INSERT DATA HERE</p>
+        </div>
+        
+        <div id="wishList" class="tabcontent">
+            <p>Insert Data HERE</p>
+        </div>
+        
+        <div id="addNewListing" class="tabcontent">
+            <p>INSERT DATA HERE</p>
+        </div>
     </body>
 </html>
