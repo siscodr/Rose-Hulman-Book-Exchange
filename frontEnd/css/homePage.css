@@ -1,9 +1,9 @@
 #header {
-    border-bottom: 1px solid gray;
     text-align: center;
-    font-size: 350%;
-    font-weight: bold;
-    font-family: 'Lucida Grande', Tahoma, Verdana, sans-serif;
+    color: white;
+    background-color: #790000;
+    line-height: 60px;
+    height: 60px;
 }
 
 p{
