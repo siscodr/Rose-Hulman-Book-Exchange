@@ -1,17 +1,52 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-    <header>
-        <title>Home</title>
-    </header>
-    <body>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/homePage.css">
+</head>
+
+<body>
+    <div id="header">
         <h1>Rose-Hulman Book Exchange</h1>
+        <hr />
+    </div>
 
-        <img src="..\images\Rosie-logo.jpg" alt="Rose-Hulman logo"></img>
+    <div id="contain">
+        <img src="../css/logo.jpg" />
+        <div id=right>
+            <h2>Sign In</h2>
+            <div id="login">
+                <form>
+                    <p><input type="text" placeholder="Username or Email"></p>
+                    <p><input type="password" placeholder="Password"></p>
+                    <p class="remember_me">
+                        <label>
+                            <input type="checkbox" name="remember_me" id="remember_me">
+                             Remember me
+                        </label>
+                    </p>
+                    <br />
+                    <input type="submit" value="Submit">
+                    <br />
+                    <br />
+                    <a href="./registration.html">Register Account</a>
+                </form>
+            </div>
+        </div>
+    </div>
 
-        <form>
-            <input type="text" name="Email: " placeholder="Rose email" value=""></input>
-            <input type = "password" name = "Password: " placeholder="password" value = ""></input>
-        </form>
+    <div id="info">
+        <p>
+            Tired of spending hundreds of dollars on books every quarter while attending classes at Rose-Hulman? Want a way to save money while
+            helping to protect the enviroment? How would you like to help support other students who have finished the class but need 
+            money for books in their other classes. Well Rose-Hulman Book Exchange is for you!
+        </p>
 
-    </body>
+        <p>
+            This website provides and easy to use platform to find and sell books from other students at Rose-Hulman. By using Rose-Hulman Book Exchange
+            you will help support both you and another student attending Rose while avoiding the overpriced books sold at the store!
+        </p>
+    </div>
+</body>
+
 </html>
