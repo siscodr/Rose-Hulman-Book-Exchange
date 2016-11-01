@@ -1,9 +1,55 @@
 <html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <h1>Rose-Hulman Book Exchange<h1>
+
+<head>
+	<title>Rose-Hulman Book Exchange Personal Profile</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="../js/tabbedContent.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/profile.css">
+	<link rel="stylesheet" href="../css/tabbedContent.css">
+</head>
+
+
+<body>
+	<div class="header">
+		<h1>Rose-Hulman Book Exchange</h1>
+		<hr/>
+	</div>
+
+    <div class="all-content">
+
+        <div class="user-info">
             
-    </body>
+            <div id="user-icon">
+                <img src="../images/userIconTemp.jpg" alt="User icon"></img>
+            </div>
+
+            <div class="user-main-info">
+                <p id="user-fullname">Placeholder text- name</p>
+                <p id="user-major">Placeholder text- major</p>
+                <p id="user-email">placeholder@email.com</p>
+            </div>
+            
+            <div class="personal-listings">
+                <ul class="tab">
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'listing')">Listings</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wishList')">Wishlists</a></li>
+                </ul>
+                <div id="listing" class="tabcontent">
+                    <p>PLACEHOLDER- PERSONAL LISTINGS</p>
+                </div>
+
+                <div id="wishList" class="tabcontent">
+                    <p>PLACEHOLDER- WISHLIST</p>
+                </div>
+
+                <div id="addNewListing" class="tabcontent">
+                    <p>PLACEHOLDER-ADD NEW LISTING</p>
+                </div>
+        </div>
+
+        
+    </div>
+
+</body>
+
 </html>
