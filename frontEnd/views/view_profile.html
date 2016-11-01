@@ -1,25 +1,55 @@
 <html>
-    <head>
-        <title></title>
-        <head>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css">
+
+<head>
+	<title>Rose-Hulman Book Exchange Personal Profile</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="../js/tabbedContent.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/profile.css">
+	<link rel="stylesheet" href="../css/tabbedContent.css">
 </head>
-    </head>
-    <body>
-        <div class="page-header-center" >
 
-            <h1>Rose-Hulman Book Exchange<h1>
+
+<body>
+	<div class="header">
+		<h1>Rose-Hulman Book Exchange</h1>
+		<hr/>
+	</div>
+
+    <div class="all-content">
+
+        <div class="user-info">
             
+            <div id="user-icon">
+                <img src="../images/userIconTemp.jpg" alt="User icon"></img>
+            </div>
+
+            <div class="user-main-info">
+                <p id="user-fullname">Placeholder text- name</p>
+                <p id="user-major">Placeholder text- major</p>
+                <p id="user-email">placeholder@email.com</p>
+            </div>
+            
+            <div class="personal-listings">
+                <ul class="tab">
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'listing')">Listings</a></li>
+                    <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wishList')">Wishlists</a></li>
+                </ul>
+                <div id="listing" class="tabcontent">
+                    <p>PLACEHOLDER- PERSONAL LISTINGS</p>
+                </div>
+
+                <div id="wishList" class="tabcontent">
+                    <p>PLACEHOLDER- WISHLIST</p>
+                </div>
+
+                <div id="addNewListing" class="tabcontent">
+                    <p>PLACEHOLDER-ADD NEW LISTING</p>
+                </div>
         </div>
-            
-
-
 
         
-   <!-- jQuery first, then Tether, then Bootstrap JS. -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"></script>
-    </body> 
+    </div>
+
+</body>
 
 </html>
