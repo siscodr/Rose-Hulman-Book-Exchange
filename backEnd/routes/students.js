@@ -30,22 +30,40 @@ router.route('/')
         });
     })
     .post(function (req, res) {
-        mongoose.model('Student').create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            major: req.body.major,
-            password: req.body.password,
-            listings : []
-        }, function (err, student) {
-            if (err) {
-                res.send('Problem adding student to db.');
-            } else {
-                res.format({
-                    json: function () {
-                        res.json(student);
+        mongoose.model('Student').count({email: req.body.email}, function(err, count) {
+            if (count == 0) {
+                mongoose.model('Student').create({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    major: req.body.major,
+                    password: req.body.password,
+                    listings : []
+                }, function (err, student) {
+                    if (err) {
+                        err.status = 404;
+                        res.format({
+                            json: function () {
+                                res.json({ message: err.status + ' ' + err });
+                            }
+                        });
+                    } else {
+                        res.format({
+                            json: function () {
+                                res.json(student);
+                            }
+                        });
                     }
                 });
+            } else {
+                res.status(404);
+                err = new Error('Email already in use');
+                err.status = 404;
+                res.format({
+                    json: function () {
+                        res.json({ message: err.status + ' ' + err });
+                        }
+                }); 
             }
         });
     });
@@ -130,7 +148,8 @@ router.route('/:id')
         mongoose.model('Student').findById(req.id, function (err, student) {
             student.firstName = req.body.firstName || student.firstName;
             student.lastName = req.body.lastName || student.lastName;
-            student.email = req.body.email || student.email;
+            student.email = student.email; //No changing emails
+            student.coverImage = req.body.coverImage || student.coverImage;
             student.major = req.body.major || student.major;
             student.password = req.body.password || student.password;
             //student.listings = req.body.listings || student.listings;

@@ -83,7 +83,62 @@ function updateStudent( req, res, listing) {
 router.route('/')
     // GET all listings
     .get(function (req, res, next) {
-        mongoose.model('Listing').find({}, function (err, students) {
+        mongoose.model('Listing').find({})
+            .populate('ownerId')
+            .exec(function (err, students) {
+                if (err) {
+                    return console.log(err);
+                } else {
+                    res.format({
+                        json: function () {
+                            res.json(students);
+                        }
+                    });
+                }
+            });
+    });
+    // READY to build our API
+router.route('/selling/')
+    // GET all listings
+    .get(function (req, res, next) {
+        mongoose.model('Listing').find({ selling: true})
+            .populate('ownerId')
+            .exec(function (err, students) {
+                if (err) {
+                    return console.log(err);
+                } else {
+                    res.format({
+                        json: function () {
+                            res.json(students);
+                        }
+                    });
+                }
+            });
+    });
+    // READY to build our API
+router.route('/buying/')
+    // GET all listings
+    .get(function (req, res, next) {
+        mongoose.model('Listing').find({selling: false})
+            .populate('ownerId')
+            .exec(function (err, students) {
+                if (err) {
+                    return console.log(err);
+                } else {
+                    res.format({
+                        json: function () {
+                            res.json(students);
+                        }
+                    });
+                }
+            });
+    });
+router.route('/students/:studentId')
+    //New Listing
+    .get(function (req, res, next) {
+        mongoose.model('Listing').find({ 
+            ownerId : req.studentId
+        }, function (err, students) {
             if (err) {
                 return console.log(err);
             } else {
@@ -94,9 +149,7 @@ router.route('/')
                 });
             }
         });
-    });
-router.route('/students/:studentId')
-    //New Listing
+    })
     .post(function (req, res) {
         mongoose.model('Listing').create({
             
@@ -109,6 +162,7 @@ router.route('/students/:studentId')
             condition: req.body.condition,
             condition_comments: req.body.condition_comments,
             selling: req.body.selling,
+            sold: false,
             ownerId: req.studentId
 
         }, function (err, listing) {
