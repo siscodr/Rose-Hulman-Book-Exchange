@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var apiUrl = "https://localhost:3000/users/";
+    var apiUrl = "http://localhost:3000/students/";
     var user;
     var editForm = false;
     // FormsFields will be used when creating the forms
@@ -9,6 +9,7 @@
         { name: "lastName", des: "Last Name ", type: "text", required: true },
         { name: "email", des: "Email", type: "email", required: true },
         { name: "major", des: "Major", type: "text", required: false },
+        { name: "coverImage", des: "Profile Picture URL", type: "text", required: false },
         { name: "password", des: "Password", type: "password", required: true },
         { name: "passwordConfirm", des: "Password Confirm", type: "password", required: true },
     ];
@@ -58,6 +59,7 @@
     // make ajax call to add new contact to db
     function createUser() {
         if (user["password"] === user["passwordConfirm"]) {
+            console.log(user);  
             $.ajax({
                 url: apiUrl,
                 type: 'POST',
@@ -65,7 +67,8 @@
                 data: user,
                 success: function (data) {
                     if (data) {
-                        window.location = "logged_in.html";
+                        sessionStorage.setItem("currentUser", data._id);
+                        window.location = "home_page.html";
                     } else {
                         console.log('User could not be retrived.');
                     }

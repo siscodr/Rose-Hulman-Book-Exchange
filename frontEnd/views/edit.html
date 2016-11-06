@@ -2,7 +2,7 @@
 
 <head>
 	<title>Rose-Hulman Book Exchange Edit Profile</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../js/jquery-3.1.1.js"></script>
 	<script src="../js/tabbedContent.js"></script>
 	<link rel="stylesheet" type="text/css" href="../css/profile.css">
     <link rel="stylesheet" type="text/css" href="../css/general.css">
@@ -19,24 +19,16 @@
 
         <div class="user-info">
             <div id="user-icon">
-                <img src="../images/userIconTemp.jpg" alt="User icon"></img>
-                <input type="file" value="">
             </div>
-
             <div class="user-main-info">
-               <input type="text" placeholder="First name" value=""></input> <br>
-               <input type="text" placeholder="Last name" value=""></input> <br>
-                <input type="text" placeholder="Academic major" value=""></input> <br>
-                <p id="user-email">placeholder@email.com</p>
-                <input type="password" placeholder="New password" value=""></input> <br>
-                <input type="password" placeholder="Confirm new password" value=""></input>
+                <p id="user-email"></p>
+                <form name="userForm">
+                </form>
             </div>
-            <a href="personal_profile.html"><button id="cancel-button" type="button">Cancel changes</button></a>
-            <a href="personal_profile.html"><button id="save-button" type="button">Save changes</button></a>
-            
-            
+            <button id="cancel-button" type="button">Cancel changes</button>
+            <button id="save-button" type="button">Save changes</button>
     </div>
-
+<script src="../js/editProfile.js"></script>
 </body>
 
 </html>

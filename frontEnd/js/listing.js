@@ -1,18 +1,17 @@
 (function () {
     "use strict";
-    var apiUrl = "https://localhost:3000/users/listings/";
+    var apiUrl = "http://localhost:3000/listings/";
     var listing;
     var editForm = false;
     // FormsFields will be used when creating the forms
     var formFields = [
-        { name: "title", des: "Title", type: "text", required: true },
-        { name: "isbn", des: "ISBN", type: "text", required: true },
-        { name: "edition", des: "Edition", type: "email", required: true },
+        { name: "title", des: "Title*", type: "text", required: true },
+        { name: "isbn", des: "ISBN", type: "text", required: false },
+        { name: "edition", des: "Edition", type: "email", required: false },
         { name: "author", des: "Author", type: "text", required: false },
-        { name: "price", des: "Price", type: "number", required: true },
-        { name: "condition", des: "Condition", type: "text", required: true },
-        { name: "conditionComments", des: "Condition Comments", type: "text", required: true },
-        { name: "forSale", des: "Selling/Wishlist", type: "text", required: true }
+        { name: "coverImage", des: "Picture URL", type: "text", required: false },
+        { name: "price", des: "Price*($)", type: "number", required: true },
+        { name: "conditionComments", des: "Condition Comments", type: "text", required: true }
     ];
 
     // Update listing
@@ -25,7 +24,7 @@
         formElement.append('<button type="submit" id="new-listing-button"> Submit New Listing </button>');
         $('#new-listing-button').click(function (e) {
             e.preventDefault(); // Prevent querystring from showing up in address bar
-            createUser();
+            createListing();
         });
     }
 
@@ -62,31 +61,36 @@
         var inputElement = $("<select>")
             .attr("name", "condition");
         var selectElement = $("<option>")
-            .attr("value", "new")
+            .attr("value", "New")
             .text("New");
         inputElement.append(selectElement);
         var selectElement = $("<option>")
-            .attr("value", "likeNew")
+            .attr("value", "Like New")
             .text("Like New");
         inputElement.append(selectElement);
         var selectElement = $("<option>")
-            .attr("value", "satisfactory")
+            .attr("value", "Satisfactory")
             .text("Satisfactory");
         inputElement.append(selectElement);
         var selectElement = $("<option>")
-            .attr("value", "fair")
+            .attr("value", "Fair")
             .text("Fair");
         inputElement.append(selectElement);
         var selectElement = $("<option>")
-            .attr("value", "poor")
+            .attr("value", "Poor")
             .text("Poor");
+        inputElement.append(selectElement);
+        var selectElement = $("<option>")
+            .attr("value", "Any")
+            .text("Any");
         inputElement.append(selectElement);
         inputElement.prop("required", true).attr("aria-required", "true");
         formElement.append(inputElement);
         inputElement.on('input', function () {
             var thisField = $(this);
-            inputHandler(formField.name, thisField.val());
+            inputHandler("condition", thisField.val());
         });
+        listing["condition"] = "New";
         // clear the horizontal and vertical space next to the 
         // previous element
         formElement.append('<div style="clear:both"></div>');
@@ -109,8 +113,9 @@
         formElement.append(inputElement);
         inputElement.on('input', function () {
             var thisField = $(this);
-            inputHandler(formField.name, thisField.val());
+            inputHandler("selling", thisField.val());
         });
+        listing["selling"] = true;
         // clear the horizontal and vertical space next to the 
         // previous element
         formElement.append('<div style="clear:both"></div>');
@@ -120,14 +125,15 @@
 
     // make ajax call to add new contact to db
     function createListing() {
+        console.log(listing);
         $.ajax({
-            url: apiUrl,
+            url: apiUrl + 'students/' + sessionStorage.getItem("currentUser"),
             type: 'POST',
             dataType: 'JSON',
             data: listing,
             success: function (data) {
                 if (data) {
-                    window.location = "logged_in.html";
+                    window.location.reload();
                 } else {
                     console.log('Listing could not be retrived.');
                 }
