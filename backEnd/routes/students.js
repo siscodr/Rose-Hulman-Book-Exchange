@@ -35,6 +35,7 @@ router.route('/')
                 mongoose.model('Student').create({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
+                    coverImage: req.body.coverImage,
                     email: req.body.email,
                     major: req.body.major,
                     password: req.body.password,
@@ -149,7 +150,7 @@ router.route('/:id')
             student.firstName = req.body.firstName || student.firstName;
             student.lastName = req.body.lastName || student.lastName;
             student.email = student.email; //No changing emails
-            student.coverImage = req.body.coverImage || student.coverImage;
+            student.coverImage = req.body.coverImage;
             student.major = req.body.major || student.major;
             student.password = req.body.password || student.password;
             //student.listings = req.body.listings || student.listings;
@@ -198,5 +199,54 @@ router.route('/:id')
             }
             );
     });
+
+    router.route('/:id/withListings/')
+        .get(function (req, res) {
+            mongoose.model('Student').findById(req.id)
+                .populate('listings')  
+                .exec(function (err, student)
+                {
+                if (err) {
+                    res.status(404);
+                    err = new Error('GET error, problem retrieving data');
+                    err.status = 404;
+                    res.format({
+                        json: function () {
+                            res.json({ message: err.status + ' ' + err });
+                        }
+                    });
+                } else {
+                    res.format({
+                        json: function () {
+                            res.json(student);
+                        }
+                    });
+                }
+            });
+        });
+    router.route('/withListings/:email/')
+        .get(function (req, res) {
+            mongoose.model('Student').findOne({email: req.params.email})
+                .populate('listings')  
+                .exec(function (err, student)
+                {
+                if (err) {
+                    res.status(404);
+                    err = new Error('GET error, problem retrieving data');
+                    err.status = 404;
+                    res.format({
+                        json: function () {
+                            res.json({ message: err.status + ' ' + err });
+                        }
+                    });
+                } else {
+                    res.format({
+                        json: function () {
+                            res.json(student);
+                        }
+                    });
+                }
+            });
+        });
 
 module.exports = router;

@@ -24,7 +24,7 @@ function removeListing(req, res, student, listingId) {
     var thisListingIndex = -1;
     if (student.listings.length) {
         for (var i = 0; i < student.listings.length; i++) {
-            if (student.listings[i]._id == listingId) {
+            if (student.listings[i] == listingId) {
                 thisListingIndex = i;
                 break;
             }
@@ -134,11 +134,19 @@ router.route('/buying/')
             });
     });
 router.route('/students/:studentId')
-    //New Listing
+    // Get all listings where owner is not student
     .get(function (req, res, next) {
         mongoose.model('Listing').find({ 
-            ownerId : req.studentId
-        }, function (err, students) {
+            ownerId : {
+                $ne: req.studentId
+            },
+            sold : {
+                $ne: true
+            }
+        })
+        .populate('ownerId')
+        .populate('otherStudentId')
+        .exec(function (err, students) {
             if (err) {
                 return console.log(err);
             } else {
@@ -150,6 +158,7 @@ router.route('/students/:studentId')
             }
         });
     })
+    // New Listing
     .post(function (req, res) {
         mongoose.model('Listing').create({
             
@@ -167,7 +176,8 @@ router.route('/students/:studentId')
 
         }, function (err, listing) {
             if (err) {
-                res.send('Problem adding listing to db.');
+                res.send('Problem adding listing to db. ' + err);
+
             } else {
                 //add the listing to the student's listings'
                 updateStudent(req, res, listing);
@@ -198,15 +208,11 @@ router.route('/:listingId')
     })
     //updating listing
     .put(function (req, res) {
-        mongoose.model('Listing').findById(req.listingId, function (err, student) {
-            student.firstName = req.body.firstName || student.firstName;
-            student.lastName = req.body.lastName || student.lastName;
-            student.email = req.body.email || student.email;
-            student.major = req.body.major || student.major;
-            student.password = req.body.password || student.password;
-            //student.listings = req.body.listings || student.listings;
+        mongoose.model('Listing').findById(req.listingId, function (err, listing) {
+            listing.sold = req.body.sold || listing.sold;
+            listing.otherStudentId = req.body.otherStudentId || listing.otherStudentId;
             //should edit listings individually
-            student.save(function (err, person) {
+            listing.save(function (err, listing) {
                 if (err) {
                     res.status(404);
                     err = new Error('Problem updating student');
@@ -219,7 +225,7 @@ router.route('/:listingId')
                 } else {
                     res.format({
                         json: function () {
-                            res.json(person);
+                            res.json(listing);
                         }
                     });
                 }

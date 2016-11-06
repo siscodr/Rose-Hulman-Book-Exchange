@@ -25,8 +25,9 @@ var studentSchema  = new mongoose.Schema({
         type: [
             { 
                 type: Schema.Types.ObjectId, 
-                ref: 'Listing' }
-                ]
+                ref: 'Listing' 
+            }
+            ]
     }
 });
 
