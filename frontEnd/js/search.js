@@ -7,6 +7,11 @@
     var searchByTitle = false;
     var searchByISBN = false; 
     var searchByAuthor = false;
+    var filterByCondition = false;
+    var filterCondition = "";
+    var filterByPrice = false;
+    var filterMinPrice = 0;
+    var filterMaxPrice = 9999999999;
     var searchField;
     var cleanListing = $("#listing").clone();
     var cleanWishlist = $("#wishList").clone();
@@ -93,6 +98,16 @@
                    continue;
                 }
             }
+            if(filterByPrice){
+                if(parseInt(shownListings[i].price) < filterMinPrice || parseInt(shownListings[i].price) > filterMaxPrice){
+                    continue;
+                }
+            }
+            if(filterByCondition){
+                if(shownListings[i].condition.toLowerCase() !== filterCondition){
+                    continue;
+                }
+            }
             var listingContainer = $('<div class="listing" id=\"'+shownListings[i]._id+ '\">')
             var listingObject = $('<div class="listingDiv" >')  
             
@@ -176,12 +191,15 @@
     }
     
     function search(){
-        console.log("update");
         searchField = $('[name="search"]').val().toString();
         var searchType = $('[name="searchType"] :selected').text();
+        var priceCheckBox = $('[name="priceRange"]').is(':checked');
+        var conditionCheckBox = $('[name="condition"]').is(':checked');
         searchByTitle = false; 
         searchByISBN = false; 
         searchByAuthor = false;
+        filterByCondition = false;
+        filterByPrice = false;
         if(searchType === "Title"){
             searchByTitle = true;
         }else if(searchType === "ISBN"){
@@ -189,16 +207,36 @@
         }else if (searchType === "Author"){
             searchByAuthor = true;
         }
+        if(priceCheckBox){
+            filterByPrice = true;
+            filterMinPrice = parseInt($('[name="priceMin"]').val().toString());
+            filterMaxPrice = parseInt($('[name="priceMax"]').val().toString());
+        }
+        if(conditionCheckBox){
+            filterByCondition = true;
+            filterCondition = $('[name="conditionSelected"] :selected').val();
+        }
+        
+        console.log('Search: Title? ' + searchByTitle + " | ISBN? " + searchByISBN + " | Author? " + searchByAuthor);
+        
+        console.log('Filter: Price?' + filterByPrice + ' | Condition? ' + filterByCondition)
+        
+        console.log('Price: ' + filterMinPrice + ' - > ' +filterMaxPrice);
+        console.log('Selected Condition: ' + filterCondition);
+        
         //Clear out the divs
         document.getElementById("listing").innerHTML = "";
         document.getElementById("wishList").innerHTML = "";
-        
         getListings();
-        loadListings();
         document.getElementById("defaultOpen").click();
     }
     
     $('[name="search"]').on('input', search);
+    $('[name="condition"]').on('click', search);
+    $('[name="priceRange"]').on('click', search);
+    $('[name="conditionSelected"]').on('click', search);
+    $('[name="priceMin"]').on('input', search);
+    $('[name="priceMax"]').on('input', search);
 
     $(document).ready(function () {
         checkIfUserLoggedIn();
