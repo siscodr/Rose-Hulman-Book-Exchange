@@ -62,41 +62,55 @@
         for(var i = 0 ; i < student.listings.length; i++) {
             var listingContainer = $('<div class="listing" id=\"'+student.listings[i]._id+ '\">')
             var listingObject = $('<div class="listingDiv" >')  
+
+            var topContentObject = $('<div class="topContent" >')
+            var bottomContentObject = $('<div class="bottomContent" >')
+            var buttonContainerObject = $('<div class="buttonContainer" >')  
+
+            if (student.listings[i].coverImage !== undefined) {
+                topContentObject.append($('<img class="coverImage">').attr("src", student.listings[i].coverImage))
+            }
+
             if (student.listings[i].title !== undefined) {
-                listingObject.append($('<p class="title">').text('Title: ' + student.listings[i].title))
+                topContentObject.append($('<p class="title">').text('Title: ' + student.listings[i].title))
             }
             if (student.listings[i].edition !== undefined) {
-                listingObject.append($('<p class="edition">').text('Ed: ' + student.listings[i].edition))
+                topContentObject.append($('<p class="edition">').text('Ed: ' + student.listings[i].edition))
             }
             if (student.listings[i].author !== undefined) {
-                listingObject.append($('<p class="author">').text('Author: ' + student.listings[i].author))
+                topContentObject.append($('<p class="author">').text('Author: ' + student.listings[i].author))
             }
             if (student.listings[i].isbn !== undefined) {
-                listingObject.append($('<p class="isbn">').text('ISBN: ' + student.listings[i].isbn))
+                topContentObject.append($('<p class="isbn">').text('ISBN: ' + student.listings[i].isbn))
             }
-            if (student.listings[i].coverImage !== undefined) {
-                listingObject.append($('<div class="coverImageContainer">').append($('<img class="coverImage">').attr("src", student.listings[i].coverImage)))
-            }
+
             if (student.listings[i].price !== undefined) {
-                listingObject.append($('<p class="price">').text('Asking Price : $' + student.listings[i].price))
+                bottomContentObject.append($('<p class="price">').text('Asking Price : $' + student.listings[i].price))
             }
             if (student.listings[i].condition !== undefined) {
-                listingObject.append($('<p class="condition">').text('Condition: ' + student.listings[i].condition))
+                bottomContentObject.append($('<p class="condition">').text('Condition: ' + student.listings[i].condition))
             }
             if (student.listings[i].condition_comments !== undefined) {
-                listingObject.append($('<p class="title">').text('Comments: ' + student.listings[i].condition_comments))
+                bottomContentObject.append($('<p class="title">').text('Comments: ' + student.listings[i].condition_comments))
             }
-            listingContainer.append(listingObject);
+            
+
             if (student.listings[i].sold === true){
                 loadOtherStudent(student.listings[i].otherStudentId, listingContainer);
             } else {
-                listingContainer.append($('<button class="delete-button" type="button">')
+                buttonContainerObject.append($('<button class="delete-button" type="button">')
                     .text('Delete Listing')
                     .click(function (e) {
                         e.preventDefault();
                         deleteListing($(this).parent().attr("id"));
                 }));
             }
+
+            listingObject.append(topContentObject);
+            listingObject.append(bottomContentObject);
+            listingObject.append(buttonContainerObject);
+            listingContainer.append(listingObject);
+
             if (student.listings[i].selling === true){
                 $('#listing').append(listingContainer).append($('<br />'));
             } else {

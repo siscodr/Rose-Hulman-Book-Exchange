@@ -59,19 +59,18 @@ div.listing {
 
 div.listingDiv {
     float: left;
+    display: table;
+    width: 100%;
 }
 
 img.coverImage {
     position: relative;
-    height: 100px;
+    height: 150px;
     width: auto;
     top: 0px;
-}
-
-div.coverImageContainer {
-    padding: 0px;
-    height: 100px;
-    width: auto;
+    float: left;
+    margin-right: 10px;
+    overflow: hidden;
 }
 
 .reserve-button {
@@ -83,4 +82,14 @@ div.coverImageContainer {
     text-align: center;
     text-decoration: none;
     margin: 5px;
+}
+	
+.buttonContainer{
+    display: table-cell;
+    vertical-align: middle;
+    width: 20%;
+}
+
+.topContent{
+    height: 150px;
 }

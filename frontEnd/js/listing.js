@@ -25,6 +25,7 @@
         $('#new-listing-button').click(function (e) {
             e.preventDefault(); // Prevent querystring from showing up in address bar
             createListing();
+            window.top.location.href = "personal_profile.html";
         });
     }
 
@@ -126,6 +127,9 @@
     // make ajax call to add new contact to db
     function createListing() {
         console.log(listing);
+        if(listing.coverImage == undefined){
+            listing.coverImage = "http://weknowyourdreams.com/images/book/book-06.jpg";
+        }
         $.ajax({
             url: apiUrl + 'students/' + sessionStorage.getItem("currentUser"),
             type: 'POST',
@@ -133,7 +137,7 @@
             data: listing,
             success: function (data) {
                 if (data) {
-                    window.location.reload();
+                    
                 } else {
                     console.log('Listing could not be retrived.');
                 }
