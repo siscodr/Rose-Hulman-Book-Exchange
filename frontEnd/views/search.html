@@ -4,6 +4,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="../js/tabbedContent.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/tabbedContent.css">
+        <link rel="stylesheet" type="text/css" href="../css/search.css">
         <link rel="stylesheet" type="text/css" href="../css/general.css">
     </head>
     <body>
@@ -14,34 +15,42 @@
         </div>
     </a>
         <br />
+        <div id='searchDiv'>
+            <form>
+                Search: <input type="text" name="search" id="search" placeholder="Enter Title, ISBN, or Author">
+                <select name="searchType">
+                    <option value="searchByTitle" selected>Title</option>
+                    <option value="searchByISBN">ISBN</option>
+                    <option value="searchByAuthor">Author</option>
+                </select>
+            </form>
+        </div>
         <div>
         <ul class="tab">
-            <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'listing')">Listings</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'listing')" id="defaultOpen">Listings</a></li>
             <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'wishList')">Wishlists</a></li>
             <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'addNewListing')">Add New Listing</a></li>
         </ul>
         </div>
         <div class="sidebar">
+<!--
             <p>Sort by:</p>
-            <select>
+            <select name="filterType">
                 <option value="priceL2H">Price: Low -> High</option>
                 <option value="priceH2L">Price: High -> Low</option>
                 <option value="titleA2Z">Book Title: A -> Z</option>
                 <option value="titleZ2A">Book Title: Z -> A</option>
             </select>
+-->
             <p>Filter By:</p>
             <form>
                 <input type="checkbox" name="priceRange" value="doPriceRange">Price Range<br />
-            <select>
-                <option value="low">$0-$30</option>
-                <option value="med">$31-$60</option>
-                <option value="high">$61-$90</option>
-                <option value="tooHigh">$91-$120</option>
-            </select>
+                <input type="text" name="priceMin" placeholder="0"><br />
+                <input type="text" name="priceMax" placeholder="9999999"><br />
             </form>
             <form>
                 <input type="checkbox" name="condition" value="doCondition">Condition <br />
-                <select>
+                <select name="conditionSelected">
                     <option value="new">New</option>
                     <option value="likeNew">Like New</option>
                     <option value="satisfactory">Satisfactory</option>
@@ -49,12 +58,6 @@
                     <option value="poor">Poor</option>
                 </select> 
             </form>
-            
-            <form>
-                <input type="checkbox" name="marking" value="doMarking">Inner Markings Allowed? <br />
-            </form>
-            
-            <button>Update</button>
         </div>        
         <div id="listing" class="tabcontent">
         </div>

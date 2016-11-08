@@ -1,7 +1,7 @@
 ul.tab {
     list-style-type: none;
     magrin: 0px;
-    margin-left: 150px;
+    margin-left: 175px;
     padding: 0;
     overflow: hidden;
     border: 1px solid #ccc;
@@ -39,7 +39,7 @@ ul.tab li a:focus,
 .tabcontent {
     display: none;
     margin: 0px;
-    margin-left: 150px;
+    margin-left: 175px;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
