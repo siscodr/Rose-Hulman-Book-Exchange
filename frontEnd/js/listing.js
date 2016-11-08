@@ -11,7 +11,7 @@
         { name: "author", des: "Author", type: "text", required: false },
         { name: "coverImage", des: "Picture URL", type: "text", required: false },
         { name: "price", des: "Price*($)", type: "number", required: true },
-        { name: "conditionComments", des: "Condition Comments", type: "text", required: true }
+        { name: "condition_comments", des: "Condition Comments", type: "text", required: true }
     ];
 
     // Update listing

@@ -70,28 +70,26 @@
             if (student.listings[i].coverImage !== undefined) {
                 topContentObject.append($('<img class="coverImage">').attr("src", student.listings[i].coverImage))
             }
-
             if (student.listings[i].title !== undefined) {
-                topContentObject.append($('<p class="title">').text('Title: ' + student.listings[i].title))
+                topContentObject.append($('<p class="title">').append('<span class="labels">Title: </span>').append(student.listings[i].title))
             }
             if (student.listings[i].edition !== undefined) {
-                topContentObject.append($('<p class="edition">').text('Ed: ' + student.listings[i].edition))
+                topContentObject.append($('<p class="edition">').append('<span class="labels">Edition: </span>').append(student.listings[i].edition))
             }
             if (student.listings[i].author !== undefined) {
-                topContentObject.append($('<p class="author">').text('Author: ' + student.listings[i].author))
+                topContentObject.append($('<p class="author">').append('<span class="labels">Author: </span>').append(student.listings[i].author))
             }
             if (student.listings[i].isbn !== undefined) {
-                topContentObject.append($('<p class="isbn">').text('ISBN: ' + student.listings[i].isbn))
+                topContentObject.append($('<p class="isbn">').append('<span class="labels">Isbn: </span>').append(student.listings[i].isbn))
             }
-
             if (student.listings[i].price !== undefined) {
-                bottomContentObject.append($('<p class="price">').text('Asking Price : $' + student.listings[i].price))
+                bottomContentObject.append($('<p class="price">').append('<span class="labels">Asking Price: </span>').append('$' + student.listings[i].price))
             }
             if (student.listings[i].condition !== undefined) {
-                bottomContentObject.append($('<p class="condition">').text('Condition: ' + student.listings[i].condition))
+                bottomContentObject.append($('<p class="condition">').append('<span class="labels">Condition: </span>').append(student.listings[i].condition))
             }
             if (student.listings[i].condition_comments !== undefined) {
-                bottomContentObject.append($('<p class="title">').text('Comments: ' + student.listings[i].condition_comments))
+                bottomContentObject.append($('<p class="title">').append('<span class="labels">Comments: </span>').append(student.listings[i].condition_comments))
             }
             
 
@@ -102,7 +100,7 @@
                     .text('Delete Listing')
                     .click(function (e) {
                         e.preventDefault();
-                        deleteListing($(this).parent().attr("id"));
+                        deleteListing($(".listingDiv").parent().attr("id"));
                 }));
             }
 
