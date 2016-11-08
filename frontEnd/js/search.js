@@ -104,7 +104,7 @@
                 }
             }
             if(filterByCondition){
-                if(shownListings[i].condition.toLowerCase() !== filterCondition){
+                if((shownListings[i].condition.toLowerCase() !== filterCondition) && (shownListings[i].condition.toLowerCase() !== "none"))  {
                     continue;
                 }
             }
@@ -225,10 +225,10 @@
         console.log('Selected Condition: ' + filterCondition);
         
         //Clear out the divs
-        document.getElementById("listing").innerHTML = "";
-        document.getElementById("wishList").innerHTML = "";
-        getListings();
-        document.getElementById("defaultOpen").click();
+        $('#listing').html("");
+        $('#wishList').html("");
+        loadListings();
+        //document.getElementById("defaultOpen").click();
     }
     
     $('[name="search"]').on('input', search);
