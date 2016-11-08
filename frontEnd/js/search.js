@@ -32,7 +32,6 @@
             success: function (data) {
                 if (data) {
                     student = data;
-                    addListing();
                     getListings();
                 } else {
                     console.log("User not Found");
@@ -124,10 +123,6 @@
                 $('#wishList').append(listingContainer).append($('<br />'));
             }
         }
-    }
-
-    function addListing() {
-        $("#addNewListing").html('<object id="addListingPage" type="text/html" data="add_Listing.html" ></object>');
     }
 
     function reserveListing(listingId) {

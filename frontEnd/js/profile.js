@@ -54,7 +54,6 @@
         }
         $('#edit').attr("hidden", false);
         loadListings();
-        addListing();
         document.getElementById('listing').style.display = "block";    
     }
 
@@ -115,10 +114,6 @@
                 $('#wishList').append(listingContainer).append($('<br />'));
             }
         }
-    }
-
-    function addListing() {
-        $("#addNewListing").html('<object id="addListingPage" type="text/html" data="add_Listing.html" ></object>');
     }
 
     function deleteListing( listingId) {

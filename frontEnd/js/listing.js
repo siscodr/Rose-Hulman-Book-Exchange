@@ -25,7 +25,6 @@
         $('#new-listing-button').click(function (e) {
             e.preventDefault(); // Prevent querystring from showing up in address bar
             createListing();
-            window.top.location.href = "personal_profile.html";
         });
     }
 
@@ -137,7 +136,7 @@
             data: listing,
             success: function (data) {
                 if (data) {
-                    
+                    window.location.reload();
                 } else {
                     console.log('Listing could not be retrived.');
                 }
