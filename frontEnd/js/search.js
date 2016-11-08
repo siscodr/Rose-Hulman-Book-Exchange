@@ -44,7 +44,6 @@
             success: function (data) {
                 if (data) {
                     student = data;
-                    addListing();
                     getListings();
                 } else {
                     console.log("User not Found");
@@ -109,53 +108,59 @@
                 }
             }
             var listingContainer = $('<div class="listing" id=\"'+shownListings[i]._id+ '\">')
-            var listingObject = $('<div class="listingDiv" >')  
-            
+            var listingObject = $('<div class="listingDiv" >')
+
+            var topContentObject = $('<div class="topContent" >')
+            var bottomContentObject = $('<div class="bottomContent" >')
+            var buttonContainerObject = $('<div class="buttonContainer" >')  
+
+            if (shownListings[i].coverImage !== undefined) {
+                topContentObject.append($('<div class="coverImageContainer">').append($('<img class="coverImage">').attr("src", shownListings[i].coverImage)))
+            }
             if (shownListings[i].title !== undefined) {
-                listingObject.append($('<p class="title">').text('Title: ' + shownListings[i].title))
+                topContentObject.append($('<p class="title">').append('<span class="labels">Title: </span>').append(shownListings[i].title))
             }
             if (shownListings[i].edition !== undefined) {
-                listingObject.append($('<p class="edition">').text('Ed: ' + shownListings[i].edition))
+                topContentObject.append($('<p class="edition">').append('<span class="labels">Edition: </span>').append(shownListings[i].edition))
             }
             if (shownListings[i].author !== undefined) {
-                listingObject.append($('<p class="author">').text('Author: ' + shownListings[i].author))
+                topContentObject.append($('<p class="author">').append('<span class="labels">Author: </span>').append(shownListings[i].author))
             }
             if (shownListings[i].isbn !== undefined) {
-                listingObject.append($('<p class="isbn">').text('ISBN: ' + shownListings[i].isbn))
-            }
-            if (shownListings[i].coverImage !== undefined) {
-                listingObject.append($('<div class="coverImageContainer">').append($('<img class="coverImage">').attr("src", shownListings[i].coverImage)))
+                topContentObject.append($('<p class="isbn">').append('<span class="labels">Isbn: </span>').append(shownListings[i].isbn))
             }
             if (shownListings[i].price !== undefined) {
-                listingObject.append($('<p class="price">').text('Asking Price : $' + shownListings[i].price))
+                bottomContentObject.append($('<p class="price">').append('<span class="labels">Asking Price: </span>').append('$' + shownListings[i].price))
             }
             if (shownListings[i].condition !== undefined) {
-                listingObject.append($('<p class="condition">').text('Condition: ' + shownListings[i].condition))
+                bottomContentObject.append($('<p class="condition">').append('<span class="labels">Condition: </span>').append(shownListings[i].condition))
             }
             if (shownListings[i].condition_comments !== undefined) {
-                listingObject.append($('<p class="title">').text('Comments: ' + shownListings[i].condition_comments))
+                bottomContentObject.append($('<p class="title">').append('<span class="labels">Comments: </span>').append(shownListings[i].condition_comments))
             }
-            listingContainer.append(listingObject);
+            
             if (shownListings[i].sold === true){
                 var sellerInfo = loadOtherStudent(shownListings[i].otherStudentId);
             } else {
-                listingContainer.append($('<button class="reserve-button" type="button">')
+                buttonContainerObject.append($('<button class="reserve-button" type="button">')
                     .text('Reserve Listing')
                     .click(function (e) {
                         e.preventDefault();
-                        reserveListing($(this).parent().attr("id"));
+                        reserveListing($(".listingDiv").parent().attr("id"));
                 }));
             }
+
+            listingObject.append(topContentObject);
+            listingObject.append(bottomContentObject);
+            listingObject.append(buttonContainerObject);
+            listingContainer.append(listingObject);
+
             if (shownListings[i].selling === true){
                 $('#listing').append(listingContainer).append($('<br />'));
             } else {
                 $('#wishList').append(listingContainer).append($('<br />'));
             }
         }    
-    }
-
-    function addListing() {
-        $("#addNewListing").html('<object id="addListingPage" type="text/html" data="add_Listing.html" ></object>');
     }
 
     function reserveListing(listingId) {
