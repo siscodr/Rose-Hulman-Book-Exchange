@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var apiUrl = "http://localhost:3000/listings/";
+    var apiUrl = "https://rose-hulman-textbook-exchange.herokuapp.com/listings/";
     var listing;
     var editForm = false;
     // FormsFields will be used when creating the forms
@@ -37,7 +37,7 @@
                 .attr("for", formField.name)
                 .text(formField.des);
             formElement.append(labelElement);
-            var inputElement = $("<input>")
+            var inputElement = $("<input class='addListing'>")
                 .attr("type", formField.type)
                 .attr("name", formField.name)
                 .attr("value", (listing[formField.name] || ""));

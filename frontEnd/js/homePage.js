@@ -1,7 +1,7 @@
 (function () {
     "use strict";
     var student = {}, review;
-    var apiUrl = "http://localhost:3000/students/";
+    var apiUrl = "https://rose-hulman-textbook-exchange.herokuapp.com/students/";
 
     function checkIfUserLoggedIn() {
         var userString, loggedIn = true;
@@ -10,7 +10,7 @@
         } catch (e) {
             alert("Error when reading from Session Storage " + e);
             error = true;
-            window.location = "index.html";
+            window.location = "./home_page.html";
         }
         if (loggedIn) {
             student._id = userString;
