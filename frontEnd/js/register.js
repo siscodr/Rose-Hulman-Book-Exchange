@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var apiUrl = "http://localhost:3000/students/";
+    var apiUrl = "https://rose-hulman-textbook-exchange.herokuapp.com/students/";
     var user;
     var editForm = false;
     // FormsFields will be used when creating the forms
