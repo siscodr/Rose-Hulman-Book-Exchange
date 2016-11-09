@@ -3,7 +3,7 @@
     var student = {};
     var listings;
     var shownListings;
-    var apiUrl = "http://localhost:3000/";
+    var apiUrl = "https://rose-hulman-textbook-exchange.herokuapp.com/";
     var searchByTitle = false;
     var searchByISBN = false; 
     var searchByAuthor = false;
@@ -24,7 +24,7 @@
         } catch (e) {
             alert("Error when reading from Session Storage " + e);
             error = true;
-            window.location = "index.html";
+            window.location = "./home_page.html";
         }
         if (loggedIn) {
             student._id = userString;

@@ -1,7 +1,7 @@
 (function () {
     "use strict";
     var student = {}
-    var apiUrl = "http://localhost:3000/students/";
+    var apiUrl = "https://rose-hulman-textbook-exchange.herokuapp.com/students/";
 
     // Fields for Student
     var formFields = [
@@ -83,12 +83,12 @@
         } catch (e) {
             alert("Error when reading from Session Storage " + e);
             error = true;
-            window.location = "index.html";
+            window.location = "./home_page.html";
         }
         if (loggedIn) {
             student._id = userString;
             if (student._id === null){
-                window.location = "index.html"
+                window.location = "./home_page.html"
             } else {
                 getUserById();
             }
@@ -114,7 +114,7 @@
                     createForm();
                 } else {
                     console.log("User not Found");
-                    window.location = "index.html"
+                    window.location = "./home_page.html"
                 }
             },
             error: function (request, status, error) {

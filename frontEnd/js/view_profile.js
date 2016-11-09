@@ -2,7 +2,7 @@
     "use strict";
     var student = {}
     var visitingStudent = {}
-    var apiUrl = "http://localhost:3000/";
+    var apiUrl = "https://rose-hulman-textbook-exchange.herokuapp.com/";
 
     function checkIfUser() {
         var userString, loggedIn = true;
@@ -17,7 +17,7 @@
         if (loggedIn) {
             visitingStudent.email = userString;
             if (visitingStudent.email === null){
-                window.location = "personal_profile.html"
+                window.location = "./personal_profile.html"
             } else {
                 getUserById();
             }
@@ -35,12 +35,12 @@
                     displayProfile();
                 } else {
                     console.log("User not Found");
-                    window.location = "index.html"
+                    window.location = "./home_page.html"
                 }
             },
             error: function (request, status, error) {
                 console.log(error, status, request);
-                window.location = "home_page.html"
+                window.location = "./home_page.html"
             }
         });
     }
