@@ -106,9 +106,9 @@
                     student.password = ""
                     student.passwordConfirm = ""
                     if (student.coverImage !== undefined && student.coverImage !== ""){
-                        $('#user-icon').html(' ').append($('<img src=' + student.coverImage + ' alt="User Profile Image">'))
+                        $('#user-icon').html(' ').append($('<img id="user-picture" src=' + student.coverImage + ' alt="User Profile Image">'))
                     } else {
-                        $('#user-icon').html(' ').append($('<img src=../images/RoseSeal.png>'))
+                        $('#user-icon').html(' ').append($('<img id="user-picture" src=../images/RoseSeal.png>'))
                     }
                     $('#user-email').text(student.email)
                     createForm();
