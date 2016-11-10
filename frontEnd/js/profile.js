@@ -97,7 +97,7 @@
                     .text('Delete Listing')
                     .click(function (e) {
                         e.preventDefault();
-                        deleteListing($(".listingDiv").parent().attr("id"));
+                        deleteListing($(this).parent().parent().parent().attr("id"));
                 }));
                 loadOtherStudent(student.listings[i].otherStudentId, listingContainer);
             } else {
@@ -105,7 +105,7 @@
                     .text('Delete Listing')
                     .click(function (e) {
                         e.preventDefault();
-                        deleteListing($(".listingDiv").parent().attr("id"));
+                        deleteListing($(this).parent().parent().parent().attr("id"));
                 }));
             }
 
