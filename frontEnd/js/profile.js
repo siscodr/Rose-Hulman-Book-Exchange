@@ -48,9 +48,9 @@
         $('#user-major').text('Major: ' + student.major);
         $('#user-email').text('Email: ' + student.email);
         if (student.coverImage !== undefined && student.coverImage !== "") {
-            $('#user-icon').html(' ').append($('<img src=' + student.coverImage + '>'))
+            $('#user-icon').html(' ').append($('<img id="user-picture" src=' + student.coverImage + '>'))
         } else {
-            $('#user-icon').html(' ').append($('<img src="../images/RoseSeal.png" alt="User icon"></img>'))
+            $('#user-icon').html(' ').append($('<img id="user-picture" src="../images/RoseSeal.png" alt="User icon"></img>'))
         }
         $('#edit').attr("hidden", false);
         loadListings();
@@ -79,7 +79,7 @@
                 topContentObject.append($('<p class="author">').append('<span class="labels">Author: </span>').append(student.listings[i].author))
             }
             if (student.listings[i].isbn !== undefined) {
-                topContentObject.append($('<p class="isbn">').append('<span class="labels">Isbn: </span>').append(student.listings[i].isbn))
+                topContentObject.append($('<p class="isbn">').append('<span class="labels">ISBN: </span>').append(student.listings[i].isbn))
             }
             if (student.listings[i].price !== undefined) {
                 bottomContentObject.append($('<p class="price">').append('<span class="labels">Asking Price: </span>').append('$' + student.listings[i].price))

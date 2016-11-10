@@ -1,11 +1,10 @@
 ul.tab {
     list-style-type: none;
-    magrin: 0px;
+    margin: 0px;
     margin-left: 175px;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    display: inline-block;
 }
 
 ul.tab li {
@@ -15,25 +14,30 @@ ul.tab li {
 .labels{
     font-weight: bold;
     font-size: 18px;
+    color: #0D5070;
 }
 
 ul.tab li a {
     display: inline-block;
     color: black;
+    background: #7b99b7;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    transition: 0.3s;
     font-size: 17px;
+    border-radius: 10px 10px 0px 0px;
+    border-color: ;
 }
 
 ul.tab li a:hover {
-    background-color: #ddd;
+    transition: 0.3s;
+    background-color: #99B8C7;
 }
 
 ul.tab li a:focus,
 .active {
-    background-color: #bbb;
+    background-color: #0D5070;
+    color: white;
 }
 
 .tabcontent {
@@ -41,8 +45,10 @@ ul.tab li a:focus,
     margin: 0px;
     margin-left: 175px;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    padding-bottom: 50px;
+    border: 1px solid #bbb;
     border-top: none;
+    background-color: white;
 }
 
 #addListingPage {
@@ -56,8 +62,8 @@ ul.tab li a:focus,
 }
 
 div.listing {
-    border: cornflowerblue 3px solid;
-    border-radius: 10px;
+    border: #0D5070 3px solid;
+    border-radius: 5px;
     padding: 10px;
     overflow: auto;
 }
@@ -79,14 +85,36 @@ img.coverImage {
 }
 
 .reserve-button {
-    float: right;
-    background-color: #F1F1F1; /* Same grey as tabs */
+    position: relative;
+    top: -100px;
+    left: 0px;
+    background-color: #0D5070;
+    color: white;
     border: 1px solid #ccc;
-    color: black;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     margin: 5px;
+}
+
+.delete-button {
+    position: relative;
+    top: -90px;
+    left: 0px;
+    background-color: #0D5070;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+
+}
+
+.reserve-button:hover, .delete-button.hover {
+    transition: 0.3s;
+    background-color: #7b99b7;
+    color: black;
 }
 	
 .buttonContainer{
