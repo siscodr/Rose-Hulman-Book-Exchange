@@ -79,7 +79,7 @@
                 topContentObject.append($('<p class="author">').append('<span class="labels">Author: </span>').append(student.listings[i].author))
             }
             if (student.listings[i].isbn !== undefined) {
-                topContentObject.append($('<p class="isbn">').append('<span class="labels">Isbn: </span>').append(student.listings[i].isbn))
+                topContentObject.append($('<p class="isbn">').append('<span class="labels">ISBN: </span>').append(student.listings[i].isbn))
             }
             if (student.listings[i].price !== undefined) {
                 bottomContentObject.append($('<p class="price">').append('<span class="labels">Asking Price: </span>').append('$' + student.listings[i].price))

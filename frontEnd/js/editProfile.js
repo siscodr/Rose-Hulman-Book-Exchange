@@ -9,8 +9,8 @@
         { name: "lastName", des: "Last Name ", type: "text", required: true },
         { name: "major", des: "Major", type: "text", required: false },
         { name: "coverImage", des: "Profile Picture URL", type: "text", required: false },
-        { name: "password", des: "Password", type: "password", required: true },
-        { name: "passwordConfirm", des: "Password Confirm", type: "password", required: true },
+        { name: "password", des: "New Password", type: "password", required: true },
+        { name: "passwordConfirm", des: "New Password Confirm", type: "password", required: true },
     ]
 
     // Update student

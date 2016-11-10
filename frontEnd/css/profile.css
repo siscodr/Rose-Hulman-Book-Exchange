@@ -15,42 +15,50 @@
     width: inherit;
 }
 
-img {
-    width: 200px;
-    height: 200px;
+#user-icon {
+    max-width: 200px;
+    max-height: 200px;
     position: absolute;
     top: 20px;
-    border: 2px solid #790000;
 }
 
 .user-main-info {
     position: absolute;
     top: 25px;
-    left: 220px;
+    left: 260px;
 }
 
 button {
     float: right;
-    background-color: #F1F1F1; /* Same grey as tabs */
+    border-radius: 4px;
+    background-color: #0D5070;
+    color: white;
     border: 1px solid #ccc;
-    color: black;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     margin: 5px;
-
 }
 
 button:hover {
-    transition-duration: 0.3s;
-    -webkit-transition-duration: 0.3s;
-    background-color: #ddd;
+    transition: 0.3s;
+    background-color: #7b99b7;
+    color: black;
+}
+
+#new-listing-button {
+    margin-bottom: 80px;
 }
 
 .personal-listings {
     width: inherit;
     position: relative;
     top: 300px;
+}
+
+.coverImage {
+    max-width: 200px;
+    max-height: 200px;
 }
 
 input {
@@ -61,4 +69,13 @@ input {
     position: relative;
     top: 230px;
     width: 200px;
+}
+
+/*For editing the profile*/
+
+.user-main-info form input[type=text] {
+    position: relative;
+    width: 200px;
+    margin-left: 30px;
+    margin-top: 5px;
 }

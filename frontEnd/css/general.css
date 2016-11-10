@@ -2,10 +2,16 @@
     text-align: center;
     color: white;
     background-color: #790000;
-    line-height: 60px;
-    height: 60px;  
-    text-decoration: none; 
+    line-height: 70px;
+    height: 70px;  
+    text-decoration: none;
+    font-family: serif;
 }
+
+body {
+    font-family: Tahoma, Verdana, sans-serif;
+}
+
 
 #homePageLink:visited, #homePageLink:link {
     text-decoration: none;
