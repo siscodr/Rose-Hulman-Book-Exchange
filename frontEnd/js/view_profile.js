@@ -50,9 +50,9 @@
         $('#user-major').text('Major: ' + visitingStudent.major);
         $('#user-email').text('Email: ' + visitingStudent.email);
         if (visitingStudent.coverImage !== undefined && visitingStudent.coverImage !== "") {
-            $('#user-icon').html(' ').append($('<img src=' + visitingStudent.coverImage + '>'))
+            $('#user-icon').html(' ').append($('<img id="user-picture" src=' + visitingStudent.coverImage + '>'))
         } else {
-            $('#user-icon').html(' ').append($('<img src="../images/RoseSeal.png" alt="User icon"></img>'))
+            $('#user-icon').html(' ').append($('<img id="user-picture" src="../images/RoseSeal.png" alt="User icon"></img>'))
         }
         $('#edit').attr("hidden", false);
         loadListings();
@@ -69,7 +69,7 @@
             var buttonContainerObject = $('<div class="buttonContainer" >')  
 
             if (visitingStudent.listings[i].coverImage !== undefined) {
-                topContent.append($('<div class="coverImageContainer">').append($('<img class="coverImage">').attr("src", visitingStudent.listings[i].coverImage)))
+                topContentObject.append($('<div class="coverImageContainer">').append($('<img class="coverImage">').attr("src", visitingStudent.listings[i].coverImage)))
             }
 
             if (visitingStudent.listings[i].title !== undefined) {

@@ -15,9 +15,9 @@
     width: inherit;
 }
 
-#user-icon {
-    max-width: 200px;
-    max-height: 200px;
+#user-picture {
+    width: 200px;
+    height: 200px;
     position: absolute;
     top: 20px;
 }

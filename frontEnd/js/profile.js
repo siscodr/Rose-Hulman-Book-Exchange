@@ -48,9 +48,9 @@
         $('#user-major').text('Major: ' + student.major);
         $('#user-email').text('Email: ' + student.email);
         if (student.coverImage !== undefined && student.coverImage !== "") {
-            $('#user-icon').html(' ').append($('<img src=' + student.coverImage + '>'))
+            $('#user-icon').html(' ').append($('<img id="user-picture" src=' + student.coverImage + '>'))
         } else {
-            $('#user-icon').html(' ').append($('<img src="../images/RoseSeal.png" alt="User icon"></img>'))
+            $('#user-icon').html(' ').append($('<img id="user-picture" src="../images/RoseSeal.png" alt="User icon"></img>'))
         }
         $('#edit').attr("hidden", false);
         loadListings();
