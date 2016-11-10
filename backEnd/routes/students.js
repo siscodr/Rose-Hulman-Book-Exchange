@@ -78,12 +78,16 @@ router.route('/login/')
             if (err) {
                 return console.log(err);
             } else {
-                if (student.password == req.body.password){
-                        res.format({
-                            json: function () {
-                                res.json(student);
-                            }
-                        });
+                if (student !== null && student !== undefined) {
+                    if (student.password == req.body.password){
+                            res.format({
+                                json: function () {
+                                    res.json(student);
+                                }
+                            });
+                        } else {
+                            res.json('');
+                        }
                     } else {
                         res.json('');
                     }

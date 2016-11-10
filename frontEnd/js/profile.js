@@ -93,6 +93,12 @@
             
 
             if (student.listings[i].sold === true){
+                buttonContainerObject.append($('<button class="delete-button" type="button">')
+                    .text('Delete Listing')
+                    .click(function (e) {
+                        e.preventDefault();
+                        deleteListing($(".listingDiv").parent().attr("id"));
+                }));
                 loadOtherStudent(student.listings[i].otherStudentId, listingContainer);
             } else {
                 buttonContainerObject.append($('<button class="delete-button" type="button">')
