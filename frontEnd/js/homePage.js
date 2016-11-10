@@ -49,6 +49,8 @@
         var container = $('#right')
         container.append($('<h2>').text('Sign In'))
         var theDiv = $("<div id='login'>")
+        theDiv.append($("<div id='badLogin'>").text("Bad Username/Password"));
+        theDiv.append($('<br>'));
         var loginForm = $('<form>')
         loginForm.append($('<p>').append($('<input id="usernameField" type="text" placeholder="Username or Email">')))
         loginForm.append($('<p>').append($('<input id="passwordField" type="password" placeholder="Password">')))
@@ -90,18 +92,22 @@
             dataType: 'JSON',
             data: testUser,
             success: function (data) {
-                if (data) {
+                if (data !== '') {
                     student = data;
-                    console.log(data);
                     sessionStorage.setItem("currentUser", student._id);
                     displayUser();
                 } else {
-                    console.log("User not Found");
-                    loadLogin();
+                    $('#badLogin').toggle( "fast" );
+                        setTimeout(function(){
+                            $('#badLogin').toggle( "slow" );
+                        },3000);
                 }
             },
             error: function (request, status, error) {
-                console.log(error, status, request);
+                $('#badLogin').toggle( "fast" );
+                    setTimeout(function(){
+                        $('#badLogin').toggle( "slow" );
+                    },3000);
             }
         });
     }
